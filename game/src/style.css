@@ -1,0 +1,155 @@
+/* Ember Sigil Duel — table styling. Static, no network, no web fonts. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #0c1f16;
+  color: #f3ead3;
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow: hidden;
+}
+#app { width: 1280px; height: 720px; margin: 0 auto; display: flex; flex-direction: column; }
+
+/* ---- header ---- */
+header {
+  display: flex; align-items: center; gap: 18px;
+  padding: 10px 18px;
+  background: #12291d; border-bottom: 2px solid #c9a227;
+}
+header h1 { font-size: 26px; letter-spacing: 2px; color: #f5d76e; white-space: nowrap; }
+header .sub { font-size: 13px; color: #b8c9b0; font-style: italic; }
+header .spacer { flex: 1; }
+.pill {
+  background: #1d3a2a; border: 1px solid #c9a227; border-radius: 20px;
+  padding: 5px 14px; font-size: 15px; font-weight: bold; white-space: nowrap;
+}
+.pill .lbl { font-weight: normal; font-size: 12px; color: #b8c9b0; margin-right: 6px; }
+#sigil-pill { background: #3a2a10; }
+
+/* ---- main columns ---- */
+#main { flex: 1; display: flex; min-height: 0; }
+#table { flex: 1; display: flex; flex-direction: column; padding: 10px 16px; gap: 8px; min-width: 0; }
+#logpanel {
+  width: 300px; border-left: 2px solid #c9a227; background: #0e2418;
+  padding: 10px 12px; display: flex; flex-direction: column; min-height: 0;
+}
+#logpanel h2 { font-size: 14px; letter-spacing: 2px; color: #f5d76e; margin-bottom: 8px; }
+#log { flex: 1; overflow-y: auto; font-size: 13px; line-height: 1.45; color: #d8e2cf; }
+#log p { margin-bottom: 6px; }
+#wheel { margin-top: 10px; font-size: 12px; color: #b8c9b0; border-top: 1px solid #2c4a38; padding-top: 8px; line-height: 1.5; }
+#wheel b { color: #f5d76e; }
+
+/* ---- rows: rival / arena / player ---- */
+.rowlabel { font-size: 12px; letter-spacing: 2px; color: #9db894; text-transform: uppercase; }
+.side { display: flex; align-items: center; gap: 16px; }
+.avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; background: #2a1a2e; border: 2px solid #c9a227; flex: none;
+}
+.avatar.you { background: #123a2a; }
+.who { width: 150px; flex: none; }
+.who .name { font-size: 17px; font-weight: bold; }
+.who .role { font-size: 12px; color: #9db894; }
+.lifebar {
+  width: 150px; height: 20px; background: #1a1a1a; border: 1px solid #888;
+  border-radius: 10px; overflow: hidden; margin-top: 4px; position: relative;
+}
+.lifebar .fill { height: 100%; background: linear-gradient(90deg, #c0392b, #e74c3c); transition: width .3s; }
+.lifebar .num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: bold; color: #fff; text-shadow: 0 1px 2px #000;
+}
+.statline { font-size: 13px; color: #d8e2cf; margin-top: 4px; }
+.statline b { color: #f5d76e; }
+.hand { display: flex; gap: 10px; flex: 1; align-items: center; min-width: 0; overflow: hidden; }
+
+/* ---- arena ---- */
+#arena {
+  background: #14301f; border: 2px solid #c9a227; border-radius: 12px;
+  padding: 10px 16px; min-height: 108px;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+}
+#arena .sigil-line { font-size: 16px; }
+#arena .sigil-line b { color: #f5d76e; }
+#lastplay { font-size: 15px; color: #f3ead3; line-height: 1.4; min-height: 42px; }
+#turnbanner { font-size: 13px; color: #9db894; }
+
+/* ---- cards ---- */
+.card {
+  width: 118px; height: 164px; border-radius: 10px; flex: none;
+  background: linear-gradient(180deg, #fdf6e0, #f3e6c0);
+  color: #221a10; border: 3px solid #8a6d1f;
+  padding: 7px 8px; display: flex; flex-direction: column; position: relative;
+  cursor: pointer; user-select: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,.5);
+}
+.card.ember { border-color: #c0392b; }
+.card.frost { border-color: #2980b9; }
+.card.thorn { border-color: #27ae60; }
+.card.storm { border-color: #8e44ad; }
+.card .top { display: flex; justify-content: space-between; align-items: flex-start; }
+.card .cost {
+  width: 28px; height: 28px; border-radius: 50%; background: #2c3e70; color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold;
+  border: 2px solid #dfe8ff; flex: none;
+}
+.card .mark { font-size: 22px; }
+.card .art { font-size: 34px; text-align: center; margin: 2px 0; line-height: 1; }
+.card .name { font-size: 13px; font-weight: bold; text-align: center; line-height: 1.15; min-height: 30px; }
+.card .effect { font-size: 11px; text-align: center; color: #5a4a28; line-height: 1.25; flex: 1; }
+.card .power {
+  font-size: 15px; font-weight: bold; text-align: center; color: #7a1f12;
+  border-top: 1px solid #c9b887; padding-top: 4px; margin-top: 4px;
+}
+.card .key {
+  position: absolute; top: -9px; right: -7px; width: 20px; height: 20px; border-radius: 50%;
+  background: #c9a227; color: #221a10; font-size: 12px; font-weight: bold;
+  display: flex; align-items: center; justify-content: center; border: 1px solid #fff;
+}
+.card.selected { transform: translateY(-12px); outline: 3px solid #f5d76e; box-shadow: 0 8px 18px rgba(245,215,110,.45); }
+.card.affordable:hover { transform: translateY(-6px); }
+.card.unaffordable { opacity: .55; cursor: not-allowed; }
+.card.back {
+  background: repeating-linear-gradient(45deg, #2a1a2e, #2a1a2e 10px, #3a2440 10px, #3a2440 20px);
+  border-color: #c9a227; align-items: center; justify-content: center; cursor: default;
+}
+.card.back .sigil { font-size: 44px; }
+.card.back .txt { font-size: 11px; color: #d8c9a0; text-align: center; margin-top: 6px; letter-spacing: 1px; }
+
+/* ---- footer / controls ---- */
+footer {
+  display: flex; align-items: center; gap: 14px; padding: 10px 18px;
+  background: #12291d; border-top: 2px solid #c9a227;
+}
+button {
+  font-family: Georgia, serif; font-size: 16px; font-weight: bold;
+  background: #c9a227; color: #221a10; border: none; border-radius: 8px;
+  padding: 10px 22px; cursor: pointer;
+}
+button:hover { background: #f5d76e; }
+button:disabled { background: #5a5a4a; color: #aaa; cursor: not-allowed; }
+button.ghost { background: transparent; color: #f3ead3; border: 1px solid #c9a227; }
+#hint { font-size: 13px; color: #b8c9b0; }
+#hint b { color: #f5d76e; }
+
+/* ---- overlays ---- */
+.overlay {
+  position: fixed; inset: 0; background: rgba(5, 15, 10, .92);
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+.overlay.hidden { display: none; }
+.panel {
+  width: 680px; background: #14301f; border: 3px solid #c9a227; border-radius: 16px;
+  padding: 34px 40px; text-align: center;
+}
+.panel h1 { font-size: 44px; color: #f5d76e; letter-spacing: 3px; margin-bottom: 6px; }
+.panel h2 { font-size: 30px; color: #f5d76e; margin-bottom: 10px; }
+.panel .tag { font-size: 17px; font-style: italic; color: #d8e2cf; margin-bottom: 18px; }
+.panel .rules { text-align: left; font-size: 15px; line-height: 1.6; color: #e8e2c8; margin: 0 auto 20px; max-width: 560px; }
+.panel .rules b { color: #f5d76e; }
+.panel .score { font-size: 19px; margin-bottom: 20px; line-height: 1.6; }
+.panel .score b { color: #f5d76e; }
+.panel button { font-size: 19px; padding: 12px 34px; }
+.panel .keys { margin-top: 16px; font-size: 13px; color: #9db894; }
+#win-panel { border-color: #f5d76e; }
+#loss-panel { border-color: #c0392b; }

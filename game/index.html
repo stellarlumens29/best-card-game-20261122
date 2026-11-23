@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Sigil Duel — a card duel of four elements</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>EMBER SIGIL DUEL</h1>
+    <span class="sub">a card duel of four elements — you vs the Keeper</span>
+    <span class="spacer"></span>
+    <span class="pill" id="round-pill">Round 1</span>
+    <span class="pill" id="sigil-pill">SIGIL 🔥 Ember +2</span>
+    <span class="pill" id="deck-pill">DECK You 25 · Keeper 25</span>
+  </header>
+
+  <div id="main">
+    <div id="table">
+      <!-- Rival -->
+      <div class="side">
+        <div class="avatar">🧙</div>
+        <div class="who" id="rival-name"></div>
+        <div class="hand" id="rival-hand"></div>
+      </div>
+
+      <!-- Arena -->
+      <div id="arena">
+        <div class="sigil-line" id="arena-sigil"></div>
+        <div id="last-play"></div>
+        <div id="turn-banner"></div>
+      </div>
+
+      <!-- Player -->
+      <div class="side">
+        <div class="avatar you">🧑‍🎤</div>
+        <div class="who" id="player-name"></div>
+        <div class="hand" id="player-hand"></div>
+      </div>
+    </div>
+
+    <aside id="logpanel">
+      <h2>DUEL LOG</h2>
+      <div id="log"></div>
+      <div id="wheel">
+        <b>Element wheel:</b> 🔥 Ember beats 🌿 Thorn · 🌿 Thorn beats ⚡ Storm ·
+        ⚡ Storm beats ❄️ Frost · ❄️ Frost beats 🔥 Ember.<br>
+        The sigil walks the wheel each round — the strong element keeps changing.
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <button id="end-turn">End Turn (E)</button>
+    <button id="restart" class="ghost">Restart (R)</button>
+    <span id="hint"></span>
+  </footer>
+</div>
+
+<!-- Title screen -->
+<div class="overlay" id="title-overlay">
+  <div class="panel">
+    <h1>EMBER SIGIL DUEL</h1>
+    <p class="tag">Four elements. Thirty cards. One Keeper to beat.</p>
+    <div class="rules">
+      <b>Goal:</b> reduce the Keeper's life from 20 to 0 before yours hits 0.<br>
+      <b>Each round</b> your mana refills (1, 2, 3 … up to 6) and you draw a card.<br>
+      <b>Cards</b> cost mana and show their cost, power and effect — Strike deals
+      damage, Heal restores life, Ward absorbs damage, Draw damages and draws.<br>
+      <b>Sigil:</b> one element is strong each round (+2 damage, +1 heal/ward) and
+      the sigil walks the wheel Ember → Thorn → Storm → Frost.<br>
+      <b>Controls:</b> click a card (click again to play it), or keys 1–7 + Enter.
+      E ends your turn, R restarts.
+    </div>
+    <button id="start-btn">Start the Duel</button>
+    <p class="keys">Keyboard + mouse · runs offline from static files · no network</p>
+  </div>
+</div>
+
+<!-- Win screen -->
+<div class="overlay hidden" id="win-overlay">
+  <div class="panel" id="win-panel">
+    <h2>🏆 YOU WIN THE DUEL!</h2>
+    <p class="tag">The Keeper's life reached 0 — the sigils are yours.</p>
+    <p class="score" id="win-score"></p>
+    <button id="again-win">Play Again</button>
+    <p class="keys">Press R or Enter for a rematch</p>
+  </div>
+</div>
+
+<!-- Loss screen -->
+<div class="overlay hidden" id="loss-overlay">
+  <div class="panel" id="loss-panel">
+    <h2>💀 KEEPER WINS</h2>
+    <p class="tag">Your life reached 0 — the Keeper keeps the table.</p>
+    <p class="score" id="loss-score"></p>
+    <button id="again-loss">Rematch</button>
+    <p class="keys">Press R or Enter for a rematch</p>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
